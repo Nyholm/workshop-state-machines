@@ -42,7 +42,7 @@ to move to the next state.
 ### 2. Create an implementations of `StateMachineInterface`
 
 The purpose of our `StateMachineInterface` is to loop over all `StateInterface`
-until some returns ``StateInterface::STOP`. 
+until some returns `StateInterface::STOP`. 
 
 Note that the state object may use the `StateMachineInterface::setState()`.
 
