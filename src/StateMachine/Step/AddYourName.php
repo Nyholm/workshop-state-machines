@@ -6,6 +6,7 @@ namespace App\StateMachine\Step;
 
 use App\Service\MailerService;
 use App\StateMachine\StateMachineInterface;
+use App\WorldClock;
 
 class AddYourName implements StateInterface
 {
@@ -18,10 +19,14 @@ class AddYourName implements StateInterface
             return self::CONTINUE;
         }
 
+        // Make sure we do not send emails too often
+        if ($user->getLastSentAt() > WorldClock::getDateTimeRelativeFakeTime('-24hours')) {
+            return self::STOP;
+        }
+
         $mailer->sendEmail($user, 'AddYourName');
         $stateMachine->setState(new AddYourEmail());
 
         return self::CONTINUE;
     }
-
 }

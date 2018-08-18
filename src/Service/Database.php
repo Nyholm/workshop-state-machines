@@ -17,7 +17,12 @@ class Database
 
     public function getAllUsers(): array
     {
-        $fileContent = file_get_contents($this->dataPath.'/users.json');
+        $file = $this->dataPath.'/users.json';
+        if (!file_exists($file)) {
+            $file = $this->dataPath.'/users.original.json';
+        }
+
+        $fileContent = file_get_contents($file);
         $data = json_decode($fileContent, true);
 
         $users = [];

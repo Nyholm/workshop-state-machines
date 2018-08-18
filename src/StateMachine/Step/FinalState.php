@@ -13,5 +13,4 @@ class FinalState implements StateInterface
     {
         return self::STOP;
     }
-
 }

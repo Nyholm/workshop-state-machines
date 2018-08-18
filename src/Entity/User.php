@@ -26,7 +26,7 @@ class User
             'name' => $this->name,
             'email' => $this->email,
             'twitter' => $this->twitter,
-            'lastSentAt' => $this->twitter,
+            'lastSentAt' => $this->lastSentAt,
         ];
     }
 
@@ -41,7 +41,7 @@ class User
         $user->name = $data['name'] ?? null;
         $user->email = $data['email'] ?? null;
         $user->twitter = $data['twitter'] ?? null;
-        $user->lastSentAt = (int) $data['lastSentAt'] ?? 0;
+        $user->lastSentAt = (int) ($data['lastSentAt'] ?? 0);
 
         return $user;
     }

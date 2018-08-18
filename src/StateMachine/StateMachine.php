@@ -44,5 +44,4 @@ class StateMachine implements StateMachineInterface
     {
         $this->state = $state;
     }
-
 }
