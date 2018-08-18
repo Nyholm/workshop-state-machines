@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "name": "Tobias",
+    "twitter": "@tobiasnyholm"
+  },
+  {
+    "id": "2",
+    "email": "lisa@hotmail.com"
+  },
+  {
+    "id": "3",
+    "name": "",
+    "email": ""
+  },
+  {
+    "id": "4",
+    "name": "Eugene",
+    "email": "hello@eugene.com",
+    "twitter": "@eugene"
+  }
+]
