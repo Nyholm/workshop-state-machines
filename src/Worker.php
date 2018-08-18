@@ -25,12 +25,11 @@ class Worker
         $users = $this->db->getAllUsers();
 
         foreach ($users as $user) {
-            // TODO create a state machine object
             $stateMachine = new StateMachine($this->mailer, $user);
 
             $remove = $stateMachine->start(new AddYourName());
             if ($remove) {
-                // TODO remove
+                // TODO make sure we do not query this user again
             }
         }
 

@@ -15,6 +15,6 @@ class MailerService
     public function sendEmail(User $user, string $title)
     {
         $user->setLastSentAt(WorldClock::getDateTimeRelativeFakeTime());
-        echo sprintf('Sending email with title "%s" to user (ID: %s)', $title, $user->getId())."\n";
+        echo sprintf('Sending email to user (ID: %s) with title "%s"', $user->getId(), $title)."\n";
     }
 }
