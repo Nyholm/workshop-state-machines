@@ -5,7 +5,7 @@ light an slowly moving towards something generic.
 
 ## Run
 
-Install with (we need the auto loading) 
+Install with 
 ```
 composer update
 ```
