@@ -23,7 +23,7 @@ database.
 
 To restore the data to the original values. Please remove `/var/user.json`.
 
-## Excesses 
+## Exercises
 
 We want to build a small application that send emails. The `Worker` fetches a set 
 of `Users` from the database and creates and starts `StateMachineInterface` instances
