@@ -1,7 +1,5 @@
 # Workshop: Knowing your State Machines
 
-
-
 ## Part 1
 
 We start with the Moore state machine and the state pattern.
@@ -23,3 +21,9 @@ Now when we now the basics. Lets look at the Symfony [Workflow component](https:
 
 * [Symfony](tree/symfony)
 * [Symfony forms](tree/symfony-form)
+
+## Installation requirements
+
+This workshop requires you to be able to run standard Symfony 4 application. We use PHP 7.1+. 
+
+If you want to dump workflows to nice images, you need to install [Graphviz](http://www.graphviz.org/).
