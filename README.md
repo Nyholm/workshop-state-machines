@@ -77,6 +77,36 @@ To verify your configuration. Run command:
 bin/console workflow:dump app.state_machine.traffic_light | dot -Tpng -o dump.png
 ```
 
-
 The [Symfony documentation](https://symfony.com/doc/current/workflow/state-machines.html) might be helpful here.
 
+### Exercise 3
+
+Dump the state machines to make sure the configuration is correct. 
+Use one of the following commands:
+
+(replace "NAME" with the name of your workflow/state machine)
+
+```bash
+php bin/console workflow:dump NAME | dot -Tpng -o workflow.png
+php bin/console workflow:dump NAME --dump-format=puml | java -jar plantuml.jar -p  > workflow.png
+``` 
+Now look at the file just created file "workflow.png". 
+
+### Exercise 4
+
+Implement an event subscriber for your state machine that logs all transactions. 
+
+### Exercise 5
+
+Implement an event subscriber that blocks an transition. Make sure only admins 
+(ROLE_ADMIN) can execute that transition. 
+
+### Exercise 6
+
+Refactor the `PullRequest` class and the `PullRequestController` to make t use
+a state machine or a workflow. 
+
+### Exercise 7
+
+Refactor the form to make use of a workflow. When done, see that you can change
+order of the form by just changing your configuration. 
