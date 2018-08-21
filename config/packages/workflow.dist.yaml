@@ -54,29 +54,6 @@ framework:
             metadata:
                 title: Workflow to manager article
 
-        traffic_light:
-            type: 'state_machine'
-            marking_store:
-                type: 'single_state'
-                arguments:
-                - 'state'
-            supports:
-            - App\Entity\TrafficLight
-            places:
-            - green
-            - yellow
-            - red
-            transitions:
-                to_green:
-                    from: yellow
-                    to: green
-                to_yellow:
-                    from: [green, red]
-                    to: yellow
-                to_red:
-                    from: yellow
-                    to: red
-
         straight:
             type: workflow
             supports:
