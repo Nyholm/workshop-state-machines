@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity()
  */
-class Task
+class TrafficLight
 {
     /**
      * @ORM\Column(type="integer")
@@ -18,14 +18,14 @@ class Task
     private $id;
 
     /** @ORM\Column(type="string", length=255) */
-    private $title;
+    private $street;
 
     /** @ORM\Column(type="string", nullable=true) */
-    private $marking;
+    private $state;
 
-    public function __construct($title = 'Title')
+    public function __construct($street = 'First street')
     {
-        $this->title = $title;
+        $this->street = $street;
     }
 
     public function getId()
@@ -33,23 +33,23 @@ class Task
         return $this->id;
     }
 
-    public function getTitle()
+    public function getStreet()
     {
-        return $this->title;
+        return $this->street;
     }
 
-    public function setTitle($title)
+    public function setStreet($street)
     {
-        $this->title = $title;
+        $this->street = $street;
     }
 
-    public function getMarking()
+    public function getState()
     {
-        return $this->marking;
+        return $this->state;
     }
 
-    public function setMarking($marking)
+    public function setState($state)
     {
-        $this->marking = $marking;
+        $this->state = $state;
     }
 }

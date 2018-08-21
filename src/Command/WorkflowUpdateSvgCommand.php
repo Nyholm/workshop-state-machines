@@ -8,6 +8,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Workflow\Dumper\GraphvizDumper;
+use Symfony\Component\Workflow\Dumper\StateMachineGraphvizDumper;
+use Symfony\Component\Workflow\StateMachine;
 
 class WorkflowUpdateSvgCommand extends ContainerAwareCommand
 {
@@ -24,9 +26,13 @@ class WorkflowUpdateSvgCommand extends ContainerAwareCommand
     {
         $name = $input->getArgument('service_name');
 
-        $definition = $this->getContainer()->get($name)->getDefinition();
+        $workflow = $this->getContainer()->get($name);
+        $definition = $workflow->getDefinition();
 
         $dumper = new GraphvizDumper();
+        if ($workflow instanceof StateMachine) {
+            $dumper = new StateMachineGraphvizDumper();
+        }
 
         $dot = $dumper->dump($definition, null, ['node' => ['width' => 1.6]]);
 

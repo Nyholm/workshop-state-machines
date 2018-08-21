@@ -1,32 +1,32 @@
-{% extends 'task/layout.html.twig' %}
+{% extends 'traffic_light/layout.html.twig' %}
 
 {% block main %}
-    <h1>Task "{{ task.title}}"</h1>
+    <h1>Traffic light "{{ traffic_light.state}}"</h1>
     <div class="row">
         <div class="col-md-4">
             <h2>Current Marking</h2>
             <p>
                 <code>
-                    AppBundle\Entity\Task::marking
+                    AppBundle\Entity\TrafficLight::state
                 </code>
                 <br />
                 =
                 <br />
-                <code>{{ task.marking }}</code>
+                <code>{{ traffic_light.state }}</code>
             </p>
             <p>
-                <form action="{{ path('task_reset_marking', {id: task.id}) }}" method="post" class="form-inline">
+                <form action="{{ path('traffic_light_reset_marking', {id: traffic_light.id}) }}" method="post" class="form-inline">
                     <button type="submit" class="btn btn-danger btn-xs">Reset marking</button>
                 </form>
             </p>
         </div>
         <div class="col-md-6">
             <h2>What can you do?</h2>
-            <form action="{{ path('task_apply_transition', {id: task.id}) }}" method="post">
+            <form action="{{ path('traffic_light_apply_transition', {id: traffic_light.id}) }}" method="post">
                 <div class="btn-group-vertical" role="group">
-                    {% for transition in workflow_all_transitions(task) %}
+                    {% for transition in workflow_all_transitions(traffic_light) %}
                         <button type="submit" name="transition" value="{{ transition.name }}"
-                            {% if workflow_can(task, transition.name) -%}
+                            {% if workflow_can(traffic_light, transition.name) -%}
                                 class="btn btn-primary"
                             {%- else -%}
                                 class="btn btn-danger" disabled="disabled"
@@ -38,7 +38,7 @@
                 </div>
             </form>
             <br />
-            {% if not workflow_transitions(task) %}
+            {% if not workflow_transitions(traffic_light) %}
                 <strong>{{ 'no_transition_available'|trans }}</strong>
                 <br />
                 {{ 'try_as_another_user'|trans }}
@@ -54,8 +54,8 @@
 
     $(function() {
 
-        var name = "{{ task.marking }}".replace(/[^\w]/i, '_').toLowerCase();
-        var $svg = $('#state_machine-task');
+        var name = "{{ traffic_light.state }}".replace(/[^\w]/i, '_').toLowerCase();
+        var $svg = $('#state_machine-traffic_light');
 
         sha1(name).then(function (placeHash) {
             console.log(name, placeHash);

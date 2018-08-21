@@ -1,0 +1,30 @@
+{% extends 'traffic_light/layout.html.twig' %}
+
+{% block main %}
+    <h1>Traffic light List</h1>
+    <ul class="list-unstyled">
+        {% for traffic_light in traffic_lights %}
+            <li>
+                <a href="{{ path('traffic_light_show', {id: traffic_light.id}) }}">
+                    {{ traffic_light.street }}
+                </a>
+            </li>
+        {% else %}
+            <li>
+                <p>
+                    There is no traffic light, Add one ?
+                </p>
+
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add new traffic light</h2>
+    <form action="{{ path('traffic_light_create') }}" method="post"  class="form-inline">
+        <div class="form-group">
+            <label for="street">Street name</label>
+            <input type="text" id="street" name="street" value="{{ traffic_lights ? "Street #{(traffic_lights|length) + 1}" : "My first street" }}" class="form-control" />
+        </div>
+        <button type="submit"  class="btn btn-default">create</button>
+    </form>
+{% endblock %}
