@@ -17,7 +17,7 @@ If you update the workflow configuration, you will need to regenerate the
 SVG by running the following command:
 
 ```
-# For the task
+# For the traffic light
 bin/console  workflow:build:svg state_machine.traffic_light
 # For the article
 bin/console  workflow:build:svg workflow.article
