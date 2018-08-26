@@ -6,8 +6,6 @@ namespace App;
 
 use App\Service\Database;
 use App\Service\MailerService;
-use App\StateMachine\StateMachine;
-use App\StateMachine\Step\AddYourName;
 
 class Worker
 {
