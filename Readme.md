@@ -7,7 +7,7 @@ light an slowly moving towards something generic.
 
 Install with 
 ```
-composer update
+composer install
 ```
 
 Run with 
@@ -30,9 +30,9 @@ Use transition names: `to_green`, `to_yellow` and `to_red`.
 
 ### Exercise 1 (bonus)
 
-In a country far far away, traffic light are actually not this simple. They are green
-to allow traffic. But before they turn red, they are red and yellow. Then when it is 
-about to be green again it is red, then yellow, then green. 
+In a country far far away, traffic lights are actually not this simple. They are green
+to allow traffic. But before they turn red, they are red and yellow at the same time. 
+Then when it is about to be green again it is red, then yellow, then green. 
 
 ### Exercise 2
 
