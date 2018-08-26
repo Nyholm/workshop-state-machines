@@ -96,6 +96,12 @@ Now look at the file just created file "workflow.png".
 
 Implement an event subscriber for your state machine that logs all transactions. 
 
+See it live:
+```
+bin/console server:start
+```
+Go to: http://127.0.0.1:8000/
+
 ### Exercise 5
 
 Implement an event subscriber that blocks an transition. Make sure only admins 
