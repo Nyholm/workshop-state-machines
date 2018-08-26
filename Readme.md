@@ -70,7 +70,7 @@ We do not want any user to receive too many emails at once. Some states may wait
 24 hours until they email the users. Some state may wait a week. Your task is to 
 implement some kind check for this. 
  
-The `WorkdClock` class is a good helper class that makes it easier to test your 
+The `WorldClock` class is a good helper class that makes it easier to test your 
 time limits. Just modify `WorldClock::$currentDate` to a different date. 
 
 **Hint:** You may want to add one or more new properties to `User`.
