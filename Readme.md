@@ -45,7 +45,7 @@ in the database. Lets try to remove that issue by moving the `$state` property a
 After competing this exercise, we can use the same state machine object for multiple
 different traffic light objects. 
 
-Hint: You might need to create an interface. 
+Hint: You might need to create an interface. Example `StateAwareInterface`.
 
 Note: You do not need to bother with actually storing any object in a database. 
 
