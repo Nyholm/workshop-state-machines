@@ -6,7 +6,7 @@ namespace App;
 
 class TrafficLightStateMachine
 {
-    /** @var string State. This variable name is used in tests. Do not rename.  */
+    /** @var string State. (Exercise 1) This variable name is used in tests. Do not rename.  */
     private $state;
 
     /**
