@@ -109,7 +109,7 @@ Implement an event subscriber that blocks an transition. Make sure only admins
 
 ### Exercise 6
 
-Refactor the `PullRequest` class and the `PullRequestController` to make t use
+Refactor the `PullRequest` class and the `PullRequestController` to make it use
 a state machine or a workflow. 
 
 ### Exercise 7
