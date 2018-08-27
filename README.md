@@ -46,7 +46,7 @@ bin/console doctrine:migration:migrate
 
 Configure a new state machine using a new `App\Workflow\TrafficLightFactory`. This class 
 should be used as a [service factory](https://symfony.com/doc/current/service_container/factories.html)
-You should create a new service named `app.state_machine.traffic_light` using this factory. 
+You should create a new service named `state_machine.traffic_light` using this factory. 
 
 Create a workflow that looks like this: 
 
@@ -55,7 +55,7 @@ Create a workflow that looks like this:
 To verify your factory implementation. Run command: 
 
 ```bash
-bin/console workflow:dump app.state_machine.traffic_light | dot -Tpng -o dump.png
+bin/console workflow:dump state_machine.traffic_light | dot -Tpng -o dump.png
 ```
 
 The [Symfony documentation](https://symfony.com/doc/current/components/workflow.html) might be helpful here.
@@ -74,7 +74,7 @@ framework:
 To verify your configuration. Run command: 
 
 ```bash
-bin/console workflow:dump app.state_machine.traffic_light | dot -Tpng -o dump.png
+bin/console workflow:dump state_machine.traffic_light | dot -Tpng -o dump.png
 ```
 
 The [Symfony documentation](https://symfony.com/doc/current/workflow/state-machines.html) might be helpful here.
