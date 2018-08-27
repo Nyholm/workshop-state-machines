@@ -39,16 +39,24 @@ Then when it is about to be green again it is red, then yellow, then green.
 *(Restart from **branch mealy-2** if you want to)*
 
 This `TrafficLightStateMachine` okey. We have an issue with storing this state machine
-in the database. Lets try to remove that issue by moving the state to a `TrafficLight` 
-object. 
+in the database. Lets try to remove that issue by moving the `$state` property away from
+`TrafficLightStateMachine` to a `TrafficLight` class. 
+
+After competing this exercise, we can use the same state machine object for multiple
+different traffic light objects. 
 
 Hint: You might need to create an interface. 
+
+Note: You do not need to bother with actually storing any object in a database. 
 
 ### Exercise 3
 
 We want our `TrafficLightStateMachine` to be more generic. Maybe rename it to `StateMachine`
 and refactor away the transition definition to outside of the class. The `StateMachine` 
 should take such definition as a constructor argument. 
+
+After competing this exercise, we can use the same state machine object for many 
+different objects. It is not tied to a traffic light anymore. 
 
 ### Exercise 4
 
