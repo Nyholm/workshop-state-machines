@@ -106,7 +106,10 @@ See it live:
 ```
 bin/console server:start
 ```
-Go to: http://127.0.0.1:8000/
+1. Go to: http://127.0.0.1:8000/
+2. Select "TrafficLight"
+3. Create a TrafficLight object
+4. Move around the states using the buttons. 
 
 ### Exercise 5
 

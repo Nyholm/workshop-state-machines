@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>PullRequest List</h1>
+    <ul class="list-unstyled">
+        {% for pull_request in pull_requests %}
+            <li>
+                <a href="{{ path('pull_request_show', {id: pull_request.id}) }}">
+                    {{ pull_request.name }}
+                </a>
+            </li>
+        {% else %}
+            <li>
+                <p>
+                    There is no pull requests, Add one ?
+                </p>
+
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add new pull request</h2>
+    <form action="{{ path('pull_request_create') }}" method="post"  class="form-inline">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="street" name="name" value="{{ pull_requests ? "PR #{(pull_requests|length) + 1}" : "My first pull request" }}" class="form-control" />
+        </div>
+        <button type="submit"  class="btn btn-default">Create</button>
+    </form>
+{% endblock %}
