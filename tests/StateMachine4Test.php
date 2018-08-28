@@ -9,7 +9,7 @@ use App\StateMachine;
 use Nyholm\NSA;
 use PHPUnit\Framework\TestCase;
 
-class StateMachineTest extends TestCase
+class StateMachine4Test extends TestCase
 {
     /** @var  StateMachine */
     private $sm;
