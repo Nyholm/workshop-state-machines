@@ -118,8 +118,17 @@ Implement an event subscriber that blocks an transition. Make sure only admins
 
 ### Exercise 6
 
-Refactor the `PullRequest` class and the `PullRequestController` to make it use
-a state machine or a workflow. 
+Take a look at the `PullRequest` class and the `PullRequestController`. It is 
+clearly a workflow here. 
+
+1. Try to draw that workflow on a paper?
+2. Make a change to your workflow
+3. Could you make that same change to the code?
+4. Refactor the `PullRequest` class and the `PullRequestController` to make it use
+a state machine or a workflow.
+5. Try to apply the same change (from bullet 2.) to your new implementation. 
+
+
 
 ### Exercise 7
 

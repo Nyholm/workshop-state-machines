@@ -1,83 +1,50 @@
 {% extends 'layout.html.twig' %}
 
-{% block main %}
+{% block content %}
     <h1>PullRequest: "{{ pull_request.name}} ({{ pull_request.id}})"</h1>
+    <p>Imageine this is GitHub pull request page. </p>
     <div class="row">
         <div class="col-md-4">
-            <h2>Current Marking</h2>
-            <p>
-                <code>
-                    AppBundle\Entity\TrafficLight::state
-                </code>
-                <br />
-                =
-                <br />
-                <code>{{ pull_request.state }}</code>
-            </p>
-            <p>
-                <form action="{{ path('pull_request_reset_marking', {id: pull_request.id}) }}" method="post" class="form-inline">
-                    <button type="submit" class="btn btn-danger btn-xs">Reset marking</button>
-                </form>
-            </p>
+            <h2>Properties</h2>
+            <b>Id: </b> {{ pull_request.id }}<br>
+            <b>Name: </b> {{ pull_request.name }}
         </div>
-        <div class="col-md-6">
-            <h2>What can you do?</h2>
-            <form action="{{ path('pull_request_apply_transition', {id: pull_request.id}) }}" method="post">
-                <div class="btn-group-vertical" role="group">
-                    {% for transition in workflow_all_transitions(pull_request) %}
-                        <button type="submit" name="transition" value="{{ transition.name }}"
-                            {% if workflow_can(pull_request, transition.name) -%}
-                                class="btn btn-primary"
-                            {%- else -%}
-                                class="btn btn-danger" disabled="disabled"
-                            {%- endif -%}
-                        >
-                            {{ transition.name }}
-                        </button>
-                    {% endfor %}
-                </div>
-            </form>
-            <br />
-            {% if not workflow_transitions(pull_request) %}
-                <strong>{{ 'no_transition_available'|trans }}</strong>
-                <br />
-                {{ 'try_as_another_user'|trans }}
+        <div class="col-md-4">
+            <h2>Actions</h2>
+            {% if pull_request.preSubmit %}
+                <a href="{{ path('pull_request_submit', {id: pull_request.id}) }}" class="btn btn-primary">Submit</a>
+                <br>
+            {% endif %}
+
+            {% if pull_request.open %}
+                <a href="{{ path('pull_request_close', {id: pull_request.id}) }}" class="btn btn-primary">Close</a>
+                <br>
+            {% endif %}
+
+            {% if pull_request.closed %}
+                <a href="{{ path('pull_request_reopen', {id: pull_request.id}) }}" class="btn btn-primary">Reopen</a>
+                <br>
+            {% endif %}
+
+            {% if not pull_request.locked and (pull_request.open or pull_request.closed or pull_request.merged)%}
+                <a href="{{ path('pull_request_lock', {id: pull_request.id}) }}" class="btn btn-primary">Lock</a>
+                <br>
+            {% endif %}
+
+            {% if pull_request.open and not pull_request.merged and is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('pull_request_merge', {id: pull_request.id}) }}" class="btn btn-primary">Merge</a>
+                <br>
+            {% endif %}
+
+            {% if not pull_request.locked and is_granted('ROLE_USER') %}
+                <br>
+                <textarea>
+                    Fake form for adding a comment. (nothing will happen)
+                </textarea>
+                <br>
+                <a href="javascript:void(0)" class="btn btn-primary">Comment</a>
             {% endif %}
         </div>
     </div>
 {% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <script>
-
-
-    $(function() {
-
-        var name = "{{ pull_request.state }}".replace(/[^\w]/i, '_').toLowerCase();
-        var $svg = $('#state_machine-pull_request');
-
-        sha1(name).then(function (placeHash) {
-            console.log(name, placeHash);
-            let search = 'place_' + placeHash;
-            console.log('searching for ' + search + ' in $svg');
-
-            $('g.node title:contains("'+search +'")', $svg).each(function(j, place) {
-                console.log("now looking for " + name);
-                console.log(place);
-                    console.log('found ' + name, j, place);
-                    var place = $(place).parent();
-                    var ref = $('ellipse', place);
-                    ref.attr('stroke', 'red');
-                    var newEllipse = ref.clone();
-                    newEllipse.attr('rx', ref.attr('rx') * .9);
-                    newEllipse.attr('ry', ref.attr('ry') * .9);
-                    ref.after(newEllipse);
-            });
-        });
-
-        // let placeHash = sha1(name);
-        // let placeHash = crypto.createHash('sha1').update(name).digest("hex");
-    });
-    </script>
-{% endblock %}
