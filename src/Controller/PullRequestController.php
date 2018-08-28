@@ -55,7 +55,7 @@ class PullRequestController extends Controller
     }
 
     /**
-     * @Route("/submit/{id}", methods={"POST"}, name="pull_request_submit")
+     * @Route("/submit/{id}", methods={"GET"}, name="pull_request_submit")
      */
     public function submitAction(PullRequest $pullRequest)
     {
@@ -70,13 +70,11 @@ class PullRequestController extends Controller
         $em->persist($pullRequest);
         $em->flush();
 
-        return $this->render('pull_request/show.html.twig', [
-            'pull_request' => $pullRequest,
-        ]);
+        return $this->redirectToRoute('pull_request_show', ['id'=>$pullRequest->getId()]);
     }
 
     /**
-     * @Route("/close/{id}", methods={"POST"}, name="pull_request_close")
+     * @Route("/close/{id}", methods={"GET"}, name="pull_request_close")
      */
     public function closeAction(PullRequest $pullRequest)
     {
@@ -91,13 +89,11 @@ class PullRequestController extends Controller
         $em->persist($pullRequest);
         $em->flush();
 
-        return $this->render('pull_request/show.html.twig', [
-            'pull_request' => $pullRequest,
-        ]);
+        return $this->redirectToRoute('pull_request_show', ['id'=>$pullRequest->getId()]);
     }
 
     /**
-     * @Route("/reopen/{id}", methods={"POST"}, name="pull_request_reopen")
+     * @Route("/reopen/{id}", methods={"GET"}, name="pull_request_reopen")
      */
     public function reopenAction(PullRequest $pullRequest)
     {
@@ -112,13 +108,11 @@ class PullRequestController extends Controller
         $em->persist($pullRequest);
         $em->flush();
 
-        return $this->render('pull_request/show.html.twig', [
-            'pull_request' => $pullRequest,
-        ]);
+        return $this->redirectToRoute('pull_request_show', ['id'=>$pullRequest->getId()]);
     }
 
     /**
-     * @Route("/lock/{id}", methods={"POST"}, name="pull_request_lock")
+     * @Route("/lock/{id}", methods={"GET"}, name="pull_request_lock")
      */
     public function lockAction(PullRequest $pullRequest)
     {
@@ -136,13 +130,11 @@ class PullRequestController extends Controller
         $em->persist($pullRequest);
         $em->flush();
 
-        return $this->render('pull_request/show.html.twig', [
-            'pull_request' => $pullRequest,
-        ]);
+        return $this->redirectToRoute('pull_request_show', ['id'=>$pullRequest->getId()]);
     }
 
     /**
-     * @Route("/merge/{id}", methods={"POST"}, name="pull_request_merge")
+     * @Route("/merge/{id}", methods={"GET"}, name="pull_request_merge")
      */
     public function mergeAction(PullRequest $pullRequest)
     {
@@ -159,13 +151,11 @@ class PullRequestController extends Controller
         $em->persist($pullRequest);
         $em->flush();
 
-        return $this->render('pull_request/show.html.twig', [
-            'pull_request' => $pullRequest,
-        ]);
+        return $this->redirectToRoute('pull_request_show', ['id'=>$pullRequest->getId()]);
     }
 
     /**
-     * @Route("/comment/{id}", methods={"POST"}, name="pull_request_merge")
+     * @Route("/comment/{id}", methods={"POST"}, name="pull_request_comment")
      */
     public function commentAction(PullRequest $pullRequest)
     {
@@ -180,8 +170,6 @@ class PullRequestController extends Controller
         $em->persist($pullRequest);
         $em->flush();
 
-        return $this->render('pull_request/show.html.twig', [
-            'pull_request' => $pullRequest,
-        ]);
+        return $this->redirectToRoute('pull_request_show', ['id'=>$pullRequest->getId()]);
     }
 }

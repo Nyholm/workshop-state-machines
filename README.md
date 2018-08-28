@@ -129,7 +129,6 @@ a state machine or a workflow.
 5. Try to apply the same change (from bullet 2.) to your new implementation. 
 
 
-
 ### Exercise 7
 
 Refactor the form to make use of a workflow. When done, see that you can change
