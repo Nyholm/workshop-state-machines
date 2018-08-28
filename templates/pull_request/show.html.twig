@@ -7,7 +7,14 @@
         <div class="col-md-4">
             <h2>Properties</h2>
             <b>Id: </b> {{ pull_request.id }}<br>
-            <b>Name: </b> {{ pull_request.name }}
+            <b>Name: </b> {{ pull_request.name }}<br><br>
+
+            {# You may want to remove these #}
+            <b>preSubmit: </b> {{ pull_request.preSubmit|bool2string }}<br>
+            <b>open: </b> {{ pull_request.open|bool2string }}<br>
+            <b>merged: </b> {{ pull_request.merged|bool2string }}<br>
+            <b>closed: </b> {{ pull_request.closed|bool2string }}<br>
+            <b>locked: </b> {{ pull_request.locked|bool2string }}<br>
         </div>
         <div class="col-md-4">
             <h2>Actions</h2>

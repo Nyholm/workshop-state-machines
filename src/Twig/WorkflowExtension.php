@@ -21,6 +21,15 @@ class WorkflowExtension extends \Twig_Extension
         );
     }
 
+    public function getFilters()
+    {
+        return [
+            new \Twig_SimpleFilter('bool2string', [$this, 'boolToString']),
+        ];
+    }
+
+
+
     // This method is a hack to get all transitions, enabled or not.
     // This should be done only for a demo purpose
     public function getTransitions($subject, string $name = null)
@@ -39,6 +48,16 @@ class WorkflowExtension extends \Twig_Extension
         $workflow = $this->workflowRegistry->get($subject, $name);
 
         return $workflow->buildTransitionBlockerList($subject, $transitionName);
+    }
+
+
+    public function boolToString($bool)
+    {
+        if ($bool) {
+            return 'true';
+        }
+
+        return 'false';
     }
 
     public function getName()
