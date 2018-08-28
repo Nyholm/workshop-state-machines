@@ -25,7 +25,11 @@ class WorkflowExtension extends \Twig_Extension
     // This should be done only for a demo purpose
     public function getTransitions($subject, string $name = null)
     {
-        $workflow = $this->workflowRegistry->get($subject, $name);
+        try {
+            $workflow = $this->workflowRegistry->get($subject, $name);
+        } catch (\Throwable $t) {
+            throw new \RuntimeException(sprintf('%s Have you added the "supports" config key to your Yaml configuration? If you are using PHP configuration you need to add your StateMachine/Workflow to a "Registry".', $t->getMessage()), 0, $t);
+        }
 
         return $workflow->getDefinition()->getTransitions();
     }
