@@ -15,6 +15,39 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    state_machine.traffic_light_php:
+        public: true
+        class: Symfony\Component\Workflow\StateMachine
+        factory: 'App\Workflow\TrafficLightFactory:create'
+
 sensio_framework_extra:
     router:
         annotations: false
+
+framework:
+    workflows:
+        traffic_light:
+            supports: App\Entity\TrafficLight
+            marking_store:
+                type: single_state
+                arguments:
+                    - 'state'
+            places:
+                - green
+                - yellow
+                - red
+            transitions:
+                to_green:
+                    from: yellow
+                    to: green
+                to_yellow_foo:
+                    name: to_yellow
+                    from: green
+                    to: yellow
+                to_yellow_bar:
+                    name: to_yellow
+                    from: red
+                    to: yellow
+                to_red:
+                    from: yellow
+                    to: red
