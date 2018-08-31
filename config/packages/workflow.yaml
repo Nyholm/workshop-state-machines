@@ -1,3 +1,44 @@
 framework:
-    workflows:
-      # traffic_light:
+  workflows:
+    signup:
+        type: 'state_machine'
+        supports:
+          - App\Entity\UserProfile
+        initial_place: start
+        marking_store:
+            type: 'single_state' # or 'single_state'
+            arguments:
+              - 'state'
+        places:
+          start:
+            metadata:
+              route: signup_start
+          email:
+            metadata:
+              route: signup_email
+          color:
+            metadata:
+              route: signup_color
+          twitter:
+            metadata:
+              route: signup_twitter
+          done:
+            metadata:
+              route: signup_done
+        transitions:
+          step5:
+            name: next
+            from: color
+            to: done
+          step4:
+            name: next
+            from: twitter
+            to: color
+          step3:
+            name: next
+            from: email
+            to: twitter
+          step2:
+            name: next
+            from: start
+            to: email

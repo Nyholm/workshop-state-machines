@@ -37,10 +37,12 @@ class SignupController extends Controller
         $form = $this->createForm(NameType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $sm = $this->get('state_machine.signup');
+            $sm->apply($user, 'next');
             $this->em->persist($user);
             $this->em->flush();
 
-            return $this->redirectToRoute('signup_email', ['id'=>$user->getId()]);
+            return $this->getNextStepRedirect($user);
         }
 
         return $this->render('signup/start.html.twig', [
@@ -54,13 +56,18 @@ class SignupController extends Controller
      */
     public function email(Request $request, UserProfile $user)
     {
+        if (null !== $response = $this->verifyState($user, 'email')) {
+            return $response;
+        }
         $form = $this->createForm(EmailAddressType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $sm = $this->get('state_machine.signup');
+            $sm->apply($user, 'next');
             $this->em->persist($user);
             $this->em->flush();
 
-            return $this->redirectToRoute('signup_twitter', ['id'=>$user->getId()]);
+            return $this->getNextStepRedirect($user);
         }
 
         return $this->render('signup/email.html.twig', [
@@ -73,13 +80,18 @@ class SignupController extends Controller
      */
     public function twitter(Request $request, UserProfile $user)
     {
+        if (null !== $response = $this->verifyState($user, 'twitter')) {
+            return $response;
+        }
         $form = $this->createForm(TwitterType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $sm = $this->get('state_machine.signup');
+            $sm->apply($user, 'next');
             $this->em->persist($user);
             $this->em->flush();
 
-            return $this->redirectToRoute('signup_color', ['id'=>$user->getId()]);
+            return $this->getNextStepRedirect($user);
         }
 
         return $this->render('signup/twitter.html.twig', [
@@ -92,13 +104,18 @@ class SignupController extends Controller
      */
     public function color(Request $request, UserProfile $user)
     {
+        if (null !== $response = $this->verifyState($user, 'color')) {
+            return $response;
+        }
         $form = $this->createForm(FavoriteColorType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $sm = $this->get('state_machine.signup');
+            $sm->apply($user, 'next');
             $this->em->persist($user);
             $this->em->flush();
 
-            return $this->redirectToRoute('signup_done', ['id'=>$user->getId()]);
+            return $this->getNextStepRedirect($user);
         }
 
         return $this->render('signup/color.html.twig', [
@@ -110,8 +127,34 @@ class SignupController extends Controller
      */
     public function done(UserProfile $user)
     {
+        if (null !== $response = $this->verifyState($user, 'done')) {
+            return $response;
+        }
+
         return $this->render('signup/done.html.twig', [
             'user'=>$user,
         ]);
+    }
+
+    private function verifyState(UserProfile $user, $currentPlace)
+    {
+        $sm = $this->get('state_machine.signup');
+        if (!$sm->getMarkingStore()->getMarking($user)->has($currentPlace)) {
+            $metadata = $sm->getMetadataStore();
+            $place = array_keys($sm->getMarkingStore()->getMarking($user)->getPlaces())[0];
+            $route = $metadata->getPlaceMetadata($place)['route'];
+
+            return $this->redirectToRoute($route, ['id'=>$user->getId()]);
+        }
+    }
+
+    private function getNextStepRedirect(UserProfile $user): \Symfony\Component\HttpFoundation\RedirectResponse
+    {
+        $sm = $this->get('state_machine.signup');
+        $metadata = $sm->getMetadataStore();
+        $place = array_keys($sm->getMarkingStore()->getMarking($user)->getPlaces())[0];
+        $route = $metadata->getPlaceMetadata($place)['route'];
+
+        return $this->redirectToRoute($route, ['id'=>$user->getId()]);
     }
 }
