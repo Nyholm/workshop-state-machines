@@ -20,7 +20,6 @@ When we understand Moore, we move to Mealy state machine.
 Now when we now the basics. Lets look at the Symfony [Workflow component](https://symfony.com/doc/current/components/workflow.html)
 
 * [Symfony](/../../tree/symfony)
-* [Symfony forms](/../../tree/symfony-form)
 
 ## Installation requirements
 
