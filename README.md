@@ -131,5 +131,24 @@ a state machine or a workflow.
 
 ### Exercise 7
 
-Refactor the form to make use of a workflow. When done, see that you can change
-order of the form by just changing your configuration. 
+Look at the `SignupController`. It is currently 4 steps to signup. That is a business 
+requirement so we cannot change that. The business requires you to change the order
+of the steps. 
+
+1. See how the signup curretly works by visiting: http://127.0.0.1:8000/signup/start
+2. Refactor the `SignupController` to use a workflow
+3. Make sure we cannot "skip" a step by hacking the URLs
+4. Make sure we use the workflow for `redirectToRoute`. (Use metadata on the workflow)
+
+
+Example of using metadata:
+```yaml
+framework:
+  workflows:
+    signup:
+       # ....
+      places:
+        name:
+          metadata:
+            route: signup_name
+```
