@@ -23,6 +23,6 @@ Now when we now the basics. Lets look at the Symfony [Workflow component](https:
 
 ## Installation requirements
 
-This workshop requires you to be able to run standard Symfony 4 application. We use PHP 7.1+. 
+This workshop requires you to be able to run standard Symfony 4 application. We use PHP 7.1+ and MySQL. 
 
 If you want to dump workflows to nice images, you need to install [Graphviz](http://www.graphviz.org/).
