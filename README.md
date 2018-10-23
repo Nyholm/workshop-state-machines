@@ -13,6 +13,10 @@ bin/console doctrine:schema:update --force
 
 Make sure your database DNS is correct in `.env`. 
 
+### Notes
+
+**Start with Exercise 1 now. This "Notes" section is just an FYI.** 
+
 If you update the workflow configuration, you will need to regenerate the
 SVG by running the following command:
 
@@ -23,11 +27,11 @@ bin/console  workflow:build:svg state_machine.traffic_light
 bin/console  workflow:build:svg workflow.article
 ```
 
-### Extra requirements
+#### Extra requirements
 
 To be able to dump workflows you need to install [Graphwiz](http://www.graphviz.org/)
 
-### Updates to database
+#### Updates to database
 
 If you update your models (files in `App\Entity`) you need to update your database. 
 That is done with DoctrineMigrations.
