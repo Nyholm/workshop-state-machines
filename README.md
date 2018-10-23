@@ -63,9 +63,7 @@ Create a workflow that looks like this:
 
 ![Image of State Machine](https://github.com/Nyholm/workshop-state-machines/raw/mealy-1/Resources/traffic.png)
 
-To verify your factory implementation. Run command: 
-
-The [Symfony documentation](https://symfony.com/doc/current/components/workflow.html) might be helpful here.
+The [this section of Symfony documentation](https://symfony.com/doc/current/components/workflow.html) might be helpful here.
 
 ### Exercise 2
 
@@ -79,7 +77,7 @@ framework:
 ```
 
 
-The [Symfony documentation](https://symfony.com/doc/current/workflow/state-machines.html) might be helpful here.
+The [this section of Symfony documentation](https://symfony.com/doc/current/workflow/state-machines.html) might be helpful here.
 
 ### Exercise 3
 
