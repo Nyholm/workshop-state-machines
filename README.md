@@ -1,6 +1,6 @@
 # Workshop: Knowing your State Machines
 
-The symfony-x branches uses the Workflow component.
+The *symfony* branch uses the Workflow component.
 
 ## Run
 
