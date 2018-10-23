@@ -18,7 +18,7 @@ php src/run.php
 
 We have a very small json database in `/var/user.original.json`. That is a
 read only database. It will automatically create `/var/user.json` with your
-changes. Next time the application is running. It will use the new (/var/user.json`)
+changes. Next time the application is running. It will use the new (`/var/user.json`)
 database. 
 
 To restore the data to the original values. Please remove `/var/user.json`.
