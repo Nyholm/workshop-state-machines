@@ -11,7 +11,7 @@ bin/console doctrine:database:create
 bin/console doctrine:schema:update --force
 ```
 
-Make sure your database DNS is correct in `.env`. 
+Make sure your database DSN is correct in `.env`. 
 
 ### Notes
 
