@@ -88,7 +88,7 @@ Use one of the following commands:
 
 ```bash
 php bin/console workflow:dump NAME | dot -Tpng -o workflow.png
-php bin/console workflow:dump NAME --dump-format=puml | java -jar plantuml.jar -p  > workflow.png
+php bin/console workflow:dump NAME --dump-format=puml | java -jar plantuml.jar -p  > workflow.pngddiffiff
 ``` 
 
 Example: 
@@ -102,7 +102,7 @@ Now look at the file just created file "php.png" and "yaml.png.
 
 ### Exercise 4
 
-Implement an event subscriber for your state machine that logs all transactions. 
+Implement an event subscriber for your state machine that logs all transitions. 
 
 See it live:
 ```
