@@ -37,7 +37,9 @@ class StateMachine1Test extends TestCase
 
         NSA::setProperty($sm, 'state', $currentState);
         $sm->apply(sprintf('to_%s', $newState));
-        $this->assertEquals($newState, NSA::getProperty($sm, 'state'), sprintf('A state machine with state "%s" should have updated to "%s" after ->apply("%s")', $currentState, $newState, $newState));
+        if (null === $exception) {
+            $this->assertEquals($newState, NSA::getProperty($sm, 'state'), sprintf('A state machine with state "%s" should have updated to "%s" after ->apply("%s")', $currentState, $newState, $newState));
+        }
     }
 
 
