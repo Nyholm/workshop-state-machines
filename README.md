@@ -88,7 +88,7 @@ Use one of the following commands:
 
 ```bash
 php bin/console workflow:dump NAME | dot -Tpng -o workflow.png
-php bin/console workflow:dump NAME --dump-format=puml | java -jar plantuml.jar -p  > workflow.pngddiffiff
+php bin/console workflow:dump NAME --dump-format=puml | java -jar plantuml.jar -p  > workflow.png
 ``` 
 
 Example: 
