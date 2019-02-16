@@ -102,7 +102,7 @@ Now look at the file just created file "php.png" and "yaml.png.
 
 ### Exercise 4
 
-Implement an event subscriber for your state machine that logs all transactions. 
+Implement an event subscriber for your state machine that logs all transitions. 
 
 See it live:
 ```
