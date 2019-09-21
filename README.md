@@ -74,8 +74,7 @@ framework:
       # ...
 ```
 
-
-The [Symfony documentation](https://symfony.com/doc/current/workflow/state-machines.html) might be helpful here.
+The [this section of Symfony documentation](https://symfony.com/doc/current/workflow.html#creating-a-workflow) might be helpful here.
 
 ### Exercise 3
 
