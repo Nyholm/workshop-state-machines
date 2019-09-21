@@ -1,7 +1,5 @@
 # Workshop: Knowing your State Machines
 
-Presentation slides for this workshop can be found here: https://www.slideshare.net/secret/4xi0P8U1lqYfDZ
-
 ## Part 1
 
 We start with the Moore state machine and the state pattern.
