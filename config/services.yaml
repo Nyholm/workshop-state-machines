@@ -20,6 +20,14 @@ services:
         class: Symfony\Component\Workflow\StateMachine
         factory: 'App\Workflow\TrafficLightFactory:create'
 
+    state_machine.traffic_light_messenger:
+        public: true
+        class: Symfony\Component\Workflow\StateMachine
+        arguments:
+            - '@state_machine.traffic_light.definition'
+            - ~
+            - '@App\Workflow\EventDispatcher'
+
 sensio_framework_extra:
     router:
         annotations: false
