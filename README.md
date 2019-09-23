@@ -11,11 +11,11 @@ bin/console doctrine:database:create
 bin/console doctrine:schema:update --force
 ```
 
-Make sure your database DSN is correct in `.env`. 
+Make sure your database DSN is correct in `.env`. (Override them if you like by creating `.env.local`)
 
 ### Notes
 
-**Start with Exercise 1 now. This "Notes" section is just an FYI.** 
+**This "Notes" section is just an FYI. Start with Exercise 1 now.** 
 
 If you update the workflow configuration, you will need to regenerate the
 SVG by running the following command:
