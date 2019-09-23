@@ -35,7 +35,8 @@ state machine, the *states* decide what emails should be sent.
 
 ### 1. Create an implementation of `StateInterface`
 
-Create a state that check if we should send an email to remind a user to add their name. 
+Review the code in `./src/StateMachine/StateMachine.php`. Now try to create a new state 
+that will check if we should send an email to remind a user to add their name. 
 If so, send that email with the `MailerService`. If not, use `SateMachineInterface::setState()`
 to move to the next state. 
 
@@ -43,6 +44,8 @@ to move to the next state.
 
 The purpose of our `StateMachineInterface` is to loop over all `StateInterface`
 until some returns `StateInterface::STOP`. 
+
+Continue the implementation of `./src/StateMachine/StateMachine.php`.
 
 Note that the state object may use the `StateMachineInterface::setState()`.
 

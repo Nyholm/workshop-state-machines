@@ -6,7 +6,6 @@ namespace App\StateMachine;
 
 use App\Entity\User;
 use App\Service\MailerService;
-use App\StateMachine\Step\FinalState;
 use App\StateMachine\Step\StateInterface;
 
 class StateMachine implements StateMachineInterface
@@ -23,16 +22,8 @@ class StateMachine implements StateMachineInterface
 
     public function start(StateInterface $state): bool
     {
-        $this->state = $state;
-
-        $running = StateInterface::CONTINUE;
-        while ($running === StateInterface::CONTINUE) {
-            $running = $this->state->send($this, $this->mailer);
-        }
-
-        return $this->state instanceof FinalState;
+        // TODO Implement me
     }
-
 
     public function getUser(): User
     {
