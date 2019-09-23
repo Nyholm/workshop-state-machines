@@ -49,7 +49,7 @@ bin/console doctrine:migration:migrate
 ### Exercise 1
 
 Configure a new state machine using a new `App\Workflow\TrafficLightFactory`. This class 
-should be used as a [service factory](https://symfony.com/doc/current/service_container/factories.html)
+should be used as a [service factory](https://symfony.com/doc/current/service_container/factories.html).
 You should create a new service named `state_machine.traffic_light_php` using this factory. 
 
 ```yaml
