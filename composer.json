@@ -12,5 +12,7 @@
             "App\\":"src/"
         }
     },
-    "require": {}
+    "require": {
+        "nyholm/noop": "^1.0"
+    }
 }

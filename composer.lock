@@ -1,0 +1,51 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "073a27be7998b484c22de8284c59a017",
+    "packages": [
+        {
+            "name": "nyholm/noop",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Nyholm/noop.git",
+                "reference": "7ee4a0c7d296963ea768fb88703c5d701be2c3c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Nyholm/noop/zipball/7ee4a0c7d296963ea768fb88703c5d701be2c3c8",
+                "reference": "7ee4a0c7d296963ea768fb88703c5d701be2c3c8",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nyholm\\Noop\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nyholm",
+                    "email": "tobias.nyholm@gmail.com"
+                }
+            ],
+            "description": "A package that does nothing.",
+            "time": "2019-09-23T14:19:28+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
