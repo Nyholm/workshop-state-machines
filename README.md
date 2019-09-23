@@ -154,3 +154,20 @@ framework:
           metadata:
             route: signup_name
 ```
+
+### Exercise 8
+
+We now know our way around the Workflow component and all the events it is dispatching. 
+On a real application this could quickly grow very big. If you are using the 
+[Messenger component](https://symfony.com/doc/current/components/messenger.html) you may 
+find it strange that there are two kinds of "event dispatchers". One set of events and listeners
+for the workflow and one set for the Messenger. 
+
+To make our application less complex we decided to implement a custom EventDispatcher for 
+our Workflow. That dispatcher should forward some events to a message bus and then ignore the 
+rest. 
+
+1. Run `composer req messenger`
+2. Create `App\Workflow\EventDispatcher`
+3. How to inject this event dispatcher to our existing `state_machine.traffic_light`?
+4. How do we handle guard events? Why are they a problem?
