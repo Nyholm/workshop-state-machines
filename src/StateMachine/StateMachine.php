@@ -23,6 +23,7 @@ class StateMachine implements StateMachineInterface
     public function start(StateInterface $state): bool
     {
         // TODO Implement me
+        // Run states until StateInterface::STOP
     }
 
     public function getUser(): User
