@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace App\StateMachine\Step;
+namespace App\StateMachine\State;
 
 use App\Service\MailerService;
 use App\StateMachine\StateMachineInterface;
 use App\WorldClock;
 
-class AddYourTwitter implements StateInterface
+class AddYourEmail implements StateInterface
 {
     public function send(StateMachineInterface $stateMachine, MailerService $mailer): int
     {
         $user = $stateMachine->getUser();
-        if (!empty($user->getTwitter())) {
-            $stateMachine->setState(new FinalState());
+        if (!empty($user->getEmail())) {
+            $stateMachine->setState(new AddYourTwitter());
 
             return self::CONTINUE;
         }
@@ -24,8 +24,8 @@ class AddYourTwitter implements StateInterface
             return self::STOP;
         }
 
-        $mailer->sendEmail($user, 'AddYourTwitter');
-        $stateMachine->setState(new FinalState());
+        $mailer->sendEmail($user, 'AddYourEmail');
+        $stateMachine->setState(new AddYourTwitter());
 
         return self::CONTINUE;
     }

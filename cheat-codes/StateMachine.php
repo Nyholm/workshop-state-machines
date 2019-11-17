@@ -6,9 +6,9 @@ namespace App\StateMachine;
 
 use App\Entity\User;
 use App\Service\MailerService;
-use App\StateMachine\Step\AddYourName;
-use App\StateMachine\Step\FinalState;
-use App\StateMachine\Step\StateInterface;
+use App\StateMachine\State\AddYourName;
+use App\StateMachine\State\FinalState;
+use App\StateMachine\State\StateInterface;
 
 class StateMachine implements StateMachineInterface
 {
