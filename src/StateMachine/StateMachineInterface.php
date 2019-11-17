@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\StateMachine;
 
 use App\Entity\User;
-use App\StateMachine\Step\StateInterface;
+use App\StateMachine\State\StateInterface;
 
 interface StateMachineInterface
 {

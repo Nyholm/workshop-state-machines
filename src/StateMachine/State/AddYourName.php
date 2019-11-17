@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\StateMachine\Step;
+namespace App\StateMachine\State;
 
 use App\Service\MailerService;
 use App\StateMachine\StateMachineInterface;

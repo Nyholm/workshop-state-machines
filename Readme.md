@@ -35,7 +35,7 @@ state machine, the *states* decide what emails should be sent.
 
 ### 1. Create an implementation of `StateInterface`
 
-Review the code in `./src/StateMachine/StateMachine.php` then try to finish `./src/StateMachine/Step/AddYourName.php`
+Review the code in `./src/StateMachine/StateMachine.php` then try to finish `./src/StateMachine/State/AddYourName.php`
 The `AddYourName` state will check if we should send an email to remind a user to add their name. 
 If so, send that email with the `MailerService`. If not, use `SateMachineInterface::setState()`
 to move to the next state. 

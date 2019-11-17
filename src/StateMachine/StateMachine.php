@@ -6,7 +6,7 @@ namespace App\StateMachine;
 
 use App\Entity\User;
 use App\Service\MailerService;
-use App\StateMachine\Step\StateInterface;
+use App\StateMachine\State\StateInterface;
 
 class StateMachine implements StateMachineInterface
 {
