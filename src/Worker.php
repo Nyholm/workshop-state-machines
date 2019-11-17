@@ -23,7 +23,8 @@ class Worker
         $users = $this->db->getAllUsers();
 
         foreach ($users as $user) {
-            // TODO Create a StateMachine object and call ->start()
+            // TODO Create a new StateMachine() object and call ->start()
+            // No DI required, just create a new object.
         }
 
         $this->db->saveUsers($users);
