@@ -217,3 +217,23 @@ When should you use the `Registry` class? When should you not use it?
 
 What is a `TransitionBlockerList`. How and when is it used? What issue does it solve?
 
+
+### Bonus exercise 9
+
+What is the difference between the following events: 
+
+- workflow.enter
+- workflow.entered
+- workflow.completed
+- workflow.announce
+
+### Bonus exercise 10
+
+Events are dispatched in a specific order. Example: 
+
+- workflow.leave
+- workflow.[name].leave
+- workflow.[name].leave.[place]
+
+It goes from generic to specific. Is the order important? Can we reverse the order?
+Should we reverse the order?
