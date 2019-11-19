@@ -205,3 +205,15 @@ Your task is to implement that and make sure it works.
 
 Question: Could you imagine how this context could be abused?
 
+### Bonus exercise 6
+
+What does the `AuditTrail` feature do? How does it work? Is that a feature of the Workflow component?
+
+### Bonus exercise 7
+
+When should you use the `Registry` class? When should you not use it?
+
+### Bonus exercise 8
+
+What is a `TransitionBlockerList`. How and when is it used? What issue does it solve?
+
