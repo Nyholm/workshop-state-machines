@@ -195,3 +195,13 @@ the states to be defined in their object. How can they go about to solve this?
 
 You are working with a highly advanced CRM system. You want the users to define the workflow
 for different objects themselves. How can we create such system with the Symfony workflow component? 
+
+### Bonus exercise 5
+
+Symfony 4.3 introduced `$context` on the `apply()` function. So you can pass some data from 
+the caller of the `apply()` to the objects `setMarking()` function. 
+
+Your task is to implement that and make sure it works. 
+
+Question: Could you imagine how this context could be abused?
+
