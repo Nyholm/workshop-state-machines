@@ -171,3 +171,27 @@ rest.
 2. Create `App\Workflow\EventDispatcher`
 3. How to inject this event dispatcher to our existing `state_machine.traffic_light`?
 4. How do we handle guard events? Why are they a problem?
+
+### Bonus exercise 1
+
+A defensive programmer would say that a workflow is no place for adding metadata. That is
+outside the concern of the workflow and should be handled elsewhere. 
+
+Do Exercise 7 again but without metadata. You may introduce a new service which will give
+you the route for a specific state. Try to make that class reusable for multiple services.
+
+### Bonus exercise 2
+
+Create a Guard event listener. In that listener, make a HTTP call to somewhere. (In a real
+application you may make an HTTP call to your own API) Debug the application to see when 
+this HTTP call is executed. Could we see any side effects here?
+
+### Bonus exercise 3
+
+A Domain Driven Design enthusiast would like to use the workflow component but they want 
+the states to be defined in their object. How can they go about to solve this?
+
+### Bonus exercise 4
+
+You are working with a highly advanced CRM system. You want the users to define the workflow
+for different objects themselves. How can we create such system with the Symfony workflow component? 
