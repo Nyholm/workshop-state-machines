@@ -12,6 +12,7 @@ class AddYourName implements StateInterface
     public function send(StateMachineInterface $stateMachine, MailerService $mailer): int
     {
         $user = $stateMachine->getUser();
+
         if (!empty($user->getName())) {
             // TODO Update the state
         } else {

@@ -16,5 +16,6 @@ interface StateMachineInterface
     public function start(StateInterface $state): bool;
 
     public function getUser(): User;
+
     public function setState(StateInterface $state): void;
 }
