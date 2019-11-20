@@ -12,13 +12,13 @@ class Worker
     private $db;
     private $mailer;
 
-    public function __construct(Database $em, MailerService $mailer)
+    public function __construct(Database $db, MailerService $mailer)
     {
-        $this->db = $em;
+        $this->db = $db;
         $this->mailer = $mailer;
     }
 
-    public function run()
+    public function run(): void
     {
         $users = $this->db->getAllUsers();
 

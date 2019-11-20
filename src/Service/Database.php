@@ -18,14 +18,14 @@ class Database
 
     public function __construct()
     {
-        $this->dataPath = __DIR__.'/../../var';
+        $this->dataPath = __DIR__ . '/../../var';
     }
 
     public function getAllUsers(): array
     {
-        $file = $this->dataPath.'/users.json';
+        $file = $this->dataPath . '/users.json';
         if (!file_exists($file)) {
-            $file = $this->dataPath.'/users.original.json';
+            $file = $this->dataPath . '/users.original.json';
         }
 
         $fileContent = file_get_contents($file);
@@ -44,13 +44,13 @@ class Database
      *
      * @param User[] $users
      */
-    public function saveUsers(array $users)
+    public function saveUsers(array $users): void
     {
         $data = [];
         foreach ($users as $user) {
             $data[] = $user->toArray();
         }
 
-        file_put_contents($this->dataPath.'/users.json', json_encode($data));
+        file_put_contents($this->dataPath . '/users.json', json_encode($data));
     }
 }

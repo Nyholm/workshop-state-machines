@@ -17,5 +17,4 @@ class AddYourName implements StateInterface
         // Optional: send an email
         // Optional: Move to a new state
     }
-
 }

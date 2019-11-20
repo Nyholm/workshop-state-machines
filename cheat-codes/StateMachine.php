@@ -33,7 +33,6 @@ class StateMachine implements StateMachineInterface
         return $this->state instanceof FinalState;
     }
 
-
     public function getUser(): User
     {
         return $this->user;

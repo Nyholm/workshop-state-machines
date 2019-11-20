@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "073a27be7998b484c22de8284c59a017",
+    "content-hash": "8b52718759ca37fea9bbc8278802a93f",
     "packages": [
         {
             "name": "nyholm/noop",
@@ -46,6 +46,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "^7.1"
+    },
     "platform-dev": []
 }
