@@ -22,9 +22,9 @@ SVG by running the following command:
 
 ```
 # For the traffic light
-bin/console  workflow:build:svg state_machine.traffic_light
+bin/console  app:build:svg state_machine.traffic_light
 # For the article
-bin/console  workflow:build:svg workflow.article
+bin/console  app:build:svg workflow.article
 ```
 
 ### Extra requirements
