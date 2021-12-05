@@ -13,18 +13,17 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Workflow\StateMachine;
 
 class SignupController extends AbstractController
 {
     private $em;
+    private $signupStateMachine;
 
-    /**
-     *
-     * @param $em
-     */
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em, StateMachine $signupStateMachine)
     {
         $this->em = $em;
+        $this->signupStateMachine = $signupStateMachine;
     }
 
     /**
@@ -37,7 +36,7 @@ class SignupController extends AbstractController
         $form = $this->createForm(NameType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $sm = $this->get('state_machine.signup');
+            $sm = $this->signupStateMachine;
             $sm->apply($user, 'next');
             $this->em->persist($user);
             $this->em->flush();
@@ -62,7 +61,7 @@ class SignupController extends AbstractController
         $form = $this->createForm(EmailAddressType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $sm = $this->get('state_machine.signup');
+            $sm = $this->signupStateMachine;
             $sm->apply($user, 'next');
             $this->em->persist($user);
             $this->em->flush();
@@ -86,7 +85,7 @@ class SignupController extends AbstractController
         $form = $this->createForm(TwitterType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $sm = $this->get('state_machine.signup');
+            $sm = $this->signupStateMachine;
             $sm->apply($user, 'next');
             $this->em->persist($user);
             $this->em->flush();
@@ -110,7 +109,7 @@ class SignupController extends AbstractController
         $form = $this->createForm(FavoriteColorType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $sm = $this->get('state_machine.signup');
+            $sm = $this->signupStateMachine;
             $sm->apply($user, 'next');
             $this->em->persist($user);
             $this->em->flush();
@@ -138,7 +137,7 @@ class SignupController extends AbstractController
 
     private function verifyState(UserProfile $user, $currentPlace)
     {
-        $sm = $this->get('state_machine.signup');
+        $sm = $this->signupStateMachine;
         if (!$sm->getMarkingStore()->getMarking($user)->has($currentPlace)) {
             $metadata = $sm->getMetadataStore();
             $place = array_keys($sm->getMarkingStore()->getMarking($user)->getPlaces())[0];
@@ -150,7 +149,7 @@ class SignupController extends AbstractController
 
     private function getNextStepRedirect(UserProfile $user): \Symfony\Component\HttpFoundation\RedirectResponse
     {
-        $sm = $this->get('state_machine.signup');
+        $sm = $this->signupStateMachine;
         $metadata = $sm->getMetadataStore();
         $place = array_keys($sm->getMarkingStore()->getMarking($user)->getPlaces())[0];
         $route = $metadata->getPlaceMetadata($place)['route'];

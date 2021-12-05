@@ -4,11 +4,10 @@ framework:
         type: 'state_machine'
         supports:
           - App\Entity\UserProfile
-        initial_place: start
+        initial_marking: start
         marking_store:
-            type: 'single_state' # or 'single_state'
-            arguments:
-              - 'state'
+            type: 'method'
+            property: 'state'
         places:
           start:
             metadata:

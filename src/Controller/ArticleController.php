@@ -3,16 +3,27 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Workflow\Exception\ExceptionInterface;
+use Symfony\Component\Workflow\Workflow;
 
 /**
  * @Route("/article")
  */
 class ArticleController extends AbstractController
 {
+    private $articleWorkflow;
+    private $em;
+
+    public function __construct(Workflow $articleWorkflow, EntityManagerInterface $em)
+    {
+        $this->articleWorkflow = $articleWorkflow;
+        $this->em = $em;
+    }
+
     /**
      * @Route("", name="article_index")
      */
@@ -30,7 +41,7 @@ class ArticleController extends AbstractController
     {
         $article = new Article($request->request->get('title', 'title'));
 
-        $em = $this->get('doctrine')->getManager();
+        $em = $this->em;
         $em->persist($article);
         $em->flush();
 
@@ -53,12 +64,11 @@ class ArticleController extends AbstractController
     public function applyTransitionAction(Request $request, Article $article)
     {
         try {
-            $this->get('workflow.article')
-                ->apply($article, $request->request->get('transition'));
+            $this->articleWorkflow->apply($article, $request->request->get('transition'));
 
-            $this->get('doctrine')->getManager()->flush();
+            $this->em->flush();
         } catch (ExceptionInterface $e) {
-            $this->get('session')->getFlashBag()->add('danger', $e->getMessage());
+            $this->addFlash('danger', $e->getMessage());
         }
 
         return $this->redirect(
@@ -72,7 +82,7 @@ class ArticleController extends AbstractController
     public function resetMarkingAction(Article $article)
     {
         $article->setMarking([]);
-        $this->get('doctrine')->getManager()->flush();
+        $this->em->flush();
 
         return $this->redirect($this->generateUrl('article_show', ['id' => $article->getId()]));
     }

@@ -6,6 +6,10 @@ services:
         autowire: true
         autoconfigure: true
         public: false
+        bind:
+            Symfony\Component\Workflow\StateMachine $trafficLightStateMachine: '@state_machine.traffic_light'
+            Symfony\Component\Workflow\StateMachine $signupStateMachine: '@state_machine.signup'
+            Symfony\Component\Workflow\Workflow $articleWorkflow: '@workflow.article'
 
     App\:
         resource: '../src/*'
@@ -18,7 +22,7 @@ services:
     state_machine.traffic_light_php:
         public: true
         class: Symfony\Component\Workflow\StateMachine
-        factory: 'App\Workflow\TrafficLightFactory:create'
+        factory: [App\Workflow\TrafficLightFactory, create]
 
     state_machine.traffic_light_messenger:
         public: true
@@ -37,9 +41,8 @@ framework:
         traffic_light:
             supports: App\Entity\TrafficLight
             marking_store:
-                type: single_state
-                arguments:
-                    - 'state'
+                type: 'method'
+                property: 'state'
             places:
                 - green
                 - yellow

@@ -38,7 +38,7 @@ framework:
                     metadata:
                         title: Do you valid the article?
                 spellchecker_approval:
-                    guard: "is_fully_authenticated() and has_role('ROLE_SPELLCHECKER')"
+                    guard: "is_fully_authenticated() and is_granted('ROLE_SPELLCHECKER')"
                     from: wait_for_spellchecker
                     to: approved_by_spellchecker
                     metadata:
