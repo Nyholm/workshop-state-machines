@@ -20,6 +20,9 @@
     "doctrine/dbal": {
         "version": "v2.6.3"
     },
+    "doctrine/deprecations": {
+        "version": "v0.5.3"
+    },
     "doctrine/doctrine-bundle": {
         "version": "1.6",
         "recipe": {
@@ -28,9 +31,6 @@
             "version": "1.6",
             "ref": "44d3aa7752dd46f77ba11af2297a25e1dedfb4d0"
         }
-    },
-    "doctrine/doctrine-cache-bundle": {
-        "version": "1.3.2"
     },
     "doctrine/doctrine-migrations-bundle": {
         "version": "1.2",
@@ -62,8 +62,8 @@
     "doctrine/persistence": {
         "version": "v1.0.1"
     },
-    "doctrine/reflection": {
-        "version": "v1.0.0"
+    "doctrine/sql-formatter": {
+        "version": "1.1.2"
     },
     "easycorp/easy-log-handler": {
         "version": "1.0",
@@ -74,8 +74,11 @@
             "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
         }
     },
-    "jdorn/sql-formatter": {
-        "version": "v1.2.17"
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.5"
+    },
+    "laminas/laminas-code": {
+        "version": "4.4.3"
     },
     "monolog/monolog": {
         "version": "1.23.0"
@@ -83,13 +86,13 @@
     "ocramius/package-versions": {
         "version": "1.3.0"
     },
-    "ocramius/proxy-manager": {
-        "version": "2.2.1"
-    },
     "psr/cache": {
         "version": "1.0.1"
     },
     "psr/container": {
+        "version": "1.0.0"
+    },
+    "psr/event-dispatcher": {
         "version": "1.0.0"
     },
     "psr/log": {
@@ -131,9 +134,6 @@
     "symfony/css-selector": {
         "version": "v4.0.2"
     },
-    "symfony/debug": {
-        "version": "v4.0.2"
-    },
     "symfony/debug-bundle": {
         "version": "3.3",
         "recipe": {
@@ -149,6 +149,9 @@
     "symfony/dependency-injection": {
         "version": "v4.0.2"
     },
+    "symfony/deprecation-contracts": {
+        "version": "v2.5.0"
+    },
     "symfony/doctrine-bridge": {
         "version": "v4.0.2"
     },
@@ -157,6 +160,9 @@
     },
     "symfony/dotenv": {
         "version": "v4.0.2"
+    },
+    "symfony/error-handler": {
+        "version": "v4.4.34"
     },
     "symfony/event-dispatcher": {
         "version": "v4.0.2"
@@ -239,6 +245,9 @@
     "symfony/orm-pack": {
         "version": "v1.0.5"
     },
+    "symfony/password-hasher": {
+        "version": "v5.4.0"
+    },
     "symfony/phpunit-bridge": {
         "version": "3.3",
         "recipe": {
@@ -251,11 +260,14 @@
     "symfony/polyfill-ctype": {
         "version": "v1.8.0"
     },
+    "symfony/polyfill-intl-grapheme": {
+        "version": "v1.23.1"
+    },
     "symfony/polyfill-intl-icu": {
         "version": "v1.6.0"
     },
-    "symfony/polyfill-intl-idn": {
-        "version": "v1.12.0"
+    "symfony/polyfill-intl-normalizer": {
+        "version": "v1.23.0"
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.6.0"
@@ -266,14 +278,20 @@
     "symfony/polyfill-php73": {
         "version": "v1.12.0"
     },
-    "symfony/process": {
-        "version": "v4.0.2"
+    "symfony/polyfill-php80": {
+        "version": "v1.23.1"
+    },
+    "symfony/polyfill-php81": {
+        "version": "v1.23.0"
     },
     "symfony/profiler-pack": {
         "version": "v1.0.3"
     },
     "symfony/property-access": {
         "version": "v4.0.2"
+    },
+    "symfony/property-info": {
+        "version": "v5.4.0"
     },
     "symfony/routing": {
         "version": "4.0",
@@ -311,8 +329,8 @@
     "symfony/stopwatch": {
         "version": "v4.0.2"
     },
-    "symfony/thanks": {
-        "version": "v1.0.0"
+    "symfony/string": {
+        "version": "v5.4.0"
     },
     "symfony/translation": {
         "version": "3.3",
@@ -356,15 +374,6 @@
             "ref": "6bdfa1a95f6b2e677ab985cd1af2eae35d62e0f6"
         }
     },
-    "symfony/web-server-bundle": {
-        "version": "3.3",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "3.3",
-            "ref": "c72d107d077f1654428edaed69415d0228c1aefe"
-        }
-    },
     "symfony/workflow": {
         "version": "3.3",
         "recipe": {
@@ -379,11 +388,5 @@
     },
     "twig/twig": {
         "version": "v2.4.4"
-    },
-    "zendframework/zend-code": {
-        "version": "3.3.1"
-    },
-    "zendframework/zend-eventmanager": {
-        "version": "3.2.1"
     }
 }

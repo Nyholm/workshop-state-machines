@@ -10,11 +10,11 @@ use App\Form\FavoriteColorType;
 use App\Form\NameType;
 use App\Form\TwitterType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SignupController extends Controller
+class SignupController extends AbstractController
 {
     private $em;
 

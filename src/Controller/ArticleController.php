@@ -3,15 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Workflow\Exception\ExceptionInterface;
 
 /**
  * @Route("/article")
  */
-class ArticleController extends Controller
+class ArticleController extends AbstractController
 {
     /**
      * @Route("", name="article_index")

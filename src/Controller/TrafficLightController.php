@@ -3,15 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\TrafficLight;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Workflow\Exception\ExceptionInterface;
 
 /**
  * @Route("/traffic-light")
  */
-class TrafficLightController extends Controller
+class TrafficLightController extends AbstractController
 {
     /**
      * @Route("/", name="traffic_light_index")
