@@ -37,6 +37,10 @@
                 }
             ],
             "description": "A package that does nothing.",
+            "support": {
+                "issues": "https://github.com/Nyholm/noop/issues",
+                "source": "https://github.com/Nyholm/noop/tree/master"
+            },
             "time": "2019-09-23T14:19:28+00:00"
         }
     ],
@@ -47,5 +51,6 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
 }
