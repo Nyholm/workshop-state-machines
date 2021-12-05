@@ -3,16 +3,28 @@
 namespace App\Controller;
 
 use App\Entity\TrafficLight;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Workflow\Exception\ExceptionInterface;
+use Symfony\Component\Workflow\StateMachine;
 
 /**
  * @Route("/traffic-light")
  */
 class TrafficLightController extends AbstractController
 {
+    private $trafficLightStateMachine;
+    private $em;
+
+    public function __construct(EntityManagerInterface $em /*,StateMachine $trafficLightStateMachine*/)
+    {
+        // $this->trafficLightStateMachine = $trafficLightStateMachine;
+        $this->em = $em;
+    }
+
+
     /**
      * @Route("/", name="traffic_light_index")
      */
@@ -30,9 +42,8 @@ class TrafficLightController extends AbstractController
     {
         $task = new TrafficLight($request->request->get('street', 'First street'));
 
-        $em = $this->get('doctrine')->getManager();
-        $em->persist($task);
-        $em->flush();
+        $this->em->persist($task);
+        $this->em->flush();
 
         return $this->redirect($this->generateUrl('traffic_light_show', ['id' => $task->getId()]));
     }
@@ -53,12 +64,12 @@ class TrafficLightController extends AbstractController
     public function applyTransitionAction(Request $request, TrafficLight $trafficLight)
     {
         try {
-            $this->get('state_machine.traffic_light')
+            $this->trafficLightStateMachine
                 ->apply($trafficLight, $request->request->get('transition'));
 
-            $this->get('doctrine')->getManager()->flush();
+            $this->em->flush();
         } catch (ExceptionInterface $e) {
-            $this->get('session')->getFlashBag()->add('danger', $e->getMessage());
+            $this->addFlash('danger', $e->getMessage());
         }
 
         return $this->redirect(
@@ -72,7 +83,7 @@ class TrafficLightController extends AbstractController
     public function resetMarkingAction(TrafficLight $task)
     {
         $task->setState(null);
-        $this->get('doctrine')->getManager()->flush();
+        $this->em->flush();
 
         return $this->redirect($this->generateUrl('traffic_light_show', ['id' => $task->getId()]));
     }

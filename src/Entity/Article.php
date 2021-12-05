@@ -20,7 +20,7 @@ class Article
     /** @ORM\Column(type="string", length=255) */
     private $title;
 
-    /** @ORM\Column(type="json_array", nullable=true) */
+    /** @ORM\Column(type="json", nullable=true) */
     private $marking;
 
     public function __construct($title = 'Title')

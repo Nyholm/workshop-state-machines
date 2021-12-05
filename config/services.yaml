@@ -6,6 +6,9 @@ services:
         autowire: true
         autoconfigure: true
         public: false
+        bind:
+            #Symfony\Component\Workflow\StateMachine $trafficLightStateMachine: '@state_machine.traffic_light'
+            Symfony\Component\Workflow\Workflow $articleWorkflow: '@workflow.article'
 
     App\:
         resource: '../src/*'
