@@ -20,36 +20,32 @@ final class EventDispatcher implements EventDispatcherInterface
         $this->sfEventDispatcher = $sfEventDispatcher;
     }
 
-    public function dispatch($event/*, string $eventName = null*/)
+    public function dispatch(object $event, string $eventName = null): object
     {
-        $eventName = 1 < \func_num_args() ? \func_get_arg(1) : null;
-
-        if (\is_object($event)) {
-            $eventName = $eventName ?? \get_class($event);
-        } elseif (\is_string($event) && $eventName instanceof Event) {
-            $swap = $event;
-            $event = $eventName;
-            $eventName = $swap;
-        } else {
-            throw new \TypeError(\sprintf('Argument 1 passed to "%s::dispatch()" must be an object, %s given.', EventDispatcherInterface::class, \is_object($event) ? \get_class($event) : \gettype($event)));
-        }
-
         if ($event instanceof GuardEvent) {
             $this->sfEventDispatcher->dispatch($event, $eventName);
 
-            return;
+            return $event;
+        } elseif (! $event instanceof Event) {
+            return $event;
+        }
+
+        if ($eventName === null) {
+            $eventName = get_class($event);
         }
 
         // transform to an App\Message\Event\Workflow\*
-        foreach ($this->getMessages($eventName, $event) as $message) {
+        foreach ($this->getMessages($event, $eventName) as $message) {
             $this->eventBus->dispatch($message);
         }
+
+        return $event;
     }
 
     /**
      * Get a MessageBus message for the workflow events that we are interested in.
      */
-    private function getMessages(string $eventName, Event $event): array
+    private function getMessages(Event $event, string $eventName): array
     {
         switch ($eventName) {
             case 'workflow.traffic_light.completed.to_red':

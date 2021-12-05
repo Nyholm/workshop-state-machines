@@ -107,6 +107,9 @@
             "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
         }
     },
+    "symfony/amqp-messenger": {
+        "version": "v5.4.0"
+    },
     "symfony/asset": {
         "version": "v4.0.2"
     },
@@ -154,6 +157,9 @@
     },
     "symfony/doctrine-bridge": {
         "version": "v4.0.2"
+    },
+    "symfony/doctrine-messenger": {
+        "version": "v5.4.0"
     },
     "symfony/dom-crawler": {
         "version": "v4.0.2"
@@ -291,6 +297,9 @@
         "version": "v4.0.2"
     },
     "symfony/property-info": {
+        "version": "v5.4.0"
+    },
+    "symfony/redis-messenger": {
         "version": "v5.4.0"
     },
     "symfony/routing": {
