@@ -67,7 +67,7 @@ The [this section of Symfony documentation](https://symfony.com/doc/current/comp
 
 ### Exercise 2
 
-Do the same thing as **Exercise 1** but use Symfony yaml config.
+Do the same thing as **Exercise 1** but use Symfony Yaml config.
 
 ```yaml
 framework:
@@ -76,8 +76,19 @@ framework:
       # ...
 ```
 
-
 The [this section of Symfony documentation](https://symfony.com/doc/current/workflow.html#creating-a-workflow) might be helpful here.
+
+Note: Instead of Yaml you may use the PHP ConfigBuilder:
+
+```php
+use Symfony\Config\FrameworkConfig;
+
+return static function (FrameworkConfig $framework) {
+    $trafficLight = $framework->workflows()->workflows('traffic_light');
+
+    // ...
+}
+```
 
 ### Exercise 3
 
@@ -129,9 +140,9 @@ clearly a workflow here.
 1. Try to draw that workflow on a paper?
 2. Make a change to your workflow
 3. Could you make that same change to the code?
-4. Refactor the `PullRequest` class and the `PullRequestController` to make it use
+4. (optional) Refactor the `PullRequest` class and the `PullRequestController` to make it use
 a state machine or a workflow.
-5. Try to apply the same change (from bullet 2.) to your new implementation.
+5. (optional) Try to apply the same change (from bullet 2.) to your new implementation.
 
 
 ### Exercise 7
