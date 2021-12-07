@@ -18,6 +18,11 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+
+    App\Command\WorkflowUpdateSvgCommand:
+        arguments:
+            $projectDir: '%kernel.project_dir%'
+
 sensio_framework_extra:
     router:
         annotations: false

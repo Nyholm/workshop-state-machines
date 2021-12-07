@@ -2,17 +2,35 @@
 
 namespace App\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use App\Entity\Article;
+use App\Entity\PullRequest;
+use App\Entity\TrafficLight;
+use App\Entity\UserProfile;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Workflow\Dumper\GraphvizDumper;
 use Symfony\Component\Workflow\Dumper\StateMachineGraphvizDumper;
+use Symfony\Component\Workflow\Registry;
 use Symfony\Component\Workflow\StateMachine;
 
-class WorkflowUpdateSvgCommand extends ContainerAwareCommand
+class WorkflowUpdateSvgCommand extends Command
 {
+    private $registry;
+    private $projectDir;
+
+    public function __construct(Registry $registry, $projectDir)
+    {
+
+        parent::__construct();
+        $this->registry = $registry;
+        $this->projectDir = $projectDir;
+    }
+
+
     protected function configure()
     {
         $this
@@ -25,8 +43,23 @@ class WorkflowUpdateSvgCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $name = $input->getArgument('service_name');
+        $shortName = explode('.', $name)[1];
 
-        $workflow = $this->getContainer()->get($name);
+        $map = [
+            'traffic_light' => new TrafficLight(),
+            'traffic_light_php' => new TrafficLight(),
+            'article' => new Article(),
+            'pull_request' => new PullRequest('Foobar'),
+            'signup' => new UserProfile(),
+        ];
+
+        $workflow = $this->registry->get($map[$shortName] ?? null, $shortName);
+
+        if ($workflow === null) {
+            $output->writeln('Cannot find workflow with name: '.$name);
+            return 1;
+        }
+
         $definition = $workflow->getDefinition();
 
         $dumper = new GraphvizDumper();
@@ -36,7 +69,7 @@ class WorkflowUpdateSvgCommand extends ContainerAwareCommand
 
         $dot = $dumper->dump($definition, null, ['node' => ['width' => 1.6]]);
 
-        $process = new Process('dot -Tsvg');
+        $process = new Process(['dot', '-Tsvg']);
         $process->setInput($dot);
         $process->mustRun();
 
@@ -44,8 +77,8 @@ class WorkflowUpdateSvgCommand extends ContainerAwareCommand
 
         $svg = preg_replace('/.*<svg/ms', sprintf('<svg class="img-responsive" id="%s"', str_replace('.', '-', $name)), $svg);
 
-        $shortName = explode('.', $name)[1];
+        file_put_contents(sprintf('%s/templates/%s/doc.svg.twig', $this->projectDir, $shortName), $svg);
 
-        file_put_contents(sprintf('%s/templates/%s/doc.svg.twig', $this->getContainer()->getParameter('kernel.project_dir'), $shortName), $svg);
+        return 0;
     }
 }
