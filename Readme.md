@@ -41,6 +41,8 @@ In a country far far away, traffic lights are actually not this simple. They are
 to allow traffic. But before they turn red, they are red and yellow at the same time. 
 Then when it is about to be green again it is red, then yellow, then green. 
 
+Could you draw this new state machine on a paper?
+
 ### Exercise 2
 
 *(Restart from **branch mealy-2** if you want to)*
