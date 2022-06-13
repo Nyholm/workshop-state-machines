@@ -18,7 +18,7 @@
         }
     },
     "require": {
-        "phpunit/phpunit": "^7.3",
+        "phpunit/phpunit": "^8.5",
         "nyholm/nsa": "^1.1"
     }
 }
