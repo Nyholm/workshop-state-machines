@@ -13,7 +13,7 @@ class StateMachine3Test extends TestCase
 {
     /** @var  StateMachine */
     private $sm;
-    protected function setUp()/* The :void return type declaration that should be here would cause a BC issue */
+    protected function setUp(): void
     {
         parent::setUp();
         $this->sm = new StateMachine( [
