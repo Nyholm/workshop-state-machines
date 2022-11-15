@@ -251,3 +251,8 @@ Events are dispatched in a specific order. Example:
 
 It goes from generic to specific. Is the order important? Can we reverse the order?
 Should we reverse the order?
+
+### Bonus exercise 11
+
+You want to over optimize your application by reducing the number of lines of code
+executed. How would you tell Symfony not to dispatch so many events?
