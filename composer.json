@@ -4,7 +4,6 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.3",
-        "ext-iconv": "*",
         "doctrine/doctrine-bundle": "^2.5",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.5.11",
